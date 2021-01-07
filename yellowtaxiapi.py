@@ -54,7 +54,7 @@ def readcustomer():
     conn = opendbconnection()
     df = pd.DataFrame([],columns=['FirstName'])
     procname = 'dbo.sp_readcustomer'
-    paramlist = [1]
+    paramlist = [2]
     callproc = prepareproccall(procname,paramlist)
     try:
         with conn.begin() as connection:
