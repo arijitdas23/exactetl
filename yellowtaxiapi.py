@@ -63,15 +63,14 @@ def readcustomer():
                 df = pd.DataFrame(results,columns=['FirstName'])
             success = True
     except Exception as e:
-        raise Exception(str(e))
-        success = False
+        success = str(e)
     closedbconnection(conn)
     return df, success
 
 def getcustomernameapi():
     customerdf, success = readcustomer()
     out = customerdf.to_json(orient='records')
-    return out
+    return out+success
 
 
 
