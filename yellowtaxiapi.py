@@ -10,6 +10,7 @@ def opendbconnection():
     db_user_name = os.environ.get('SQL_USER_NAME')
     db_user_pswd = os.environ.get('SQL_PSWD')
 
+    """
     sql_server_name = 'azsqldbserver1988.database.windows.net'
     sql_db_name = 'azsqldb1988'
     db_user_name = 'demouser'
@@ -36,6 +37,7 @@ def opendbconnection():
                                       conStrDct.get('server'), \
                                       conStrDct.get("database"), \
                                       conStrDct.get("driver")), echo=False)
+    """
 
     return engine
 
@@ -61,7 +63,7 @@ def readcustomer():
                 df = pd.DataFrame(results,columns=['FirstName'])
             success = True
     except Exception as e:
-        print(str(e))
+        raise Exception(str(e))
         success = False
     closedbconnection(conn)
     return df, success
