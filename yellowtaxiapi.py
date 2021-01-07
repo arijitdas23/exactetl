@@ -70,7 +70,5 @@ def getcustomernameapi():
     out = customerdf.to_json(orient='records')
     return out
 
-out = getcustomernameapi()
-print(out[1:-1])
 
 
