@@ -61,7 +61,7 @@ def readcustomer():
             results = connection.execute(callproc,paramlist).fetchall()
             if len(results)>0:
                 df = pd.DataFrame(results,columns=['FirstName'])
-            success = True
+            success = "Correct"
     except Exception as e:
         success = str(e)
     closedbconnection(conn)
