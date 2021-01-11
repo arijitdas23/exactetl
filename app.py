@@ -19,7 +19,7 @@ def maxtippctgapi(trip_year,trip_quarter,max):
 
 @app.route('/api/speed/<trip_year>/<max>', defaults={'trip_month': 1,'trip_day':1}, methods=['GET'])
 @app.route('/api/speed/<trip_year>/<trip_month>/<max>', defaults={'trip_day':1}, methods=['GET'])
-@app.route('/api/tip/<trip_year>/<trip_month>/<trip_day>/<max>', methods=['GET'])
+@app.route('/api/speed/<trip_year>/<trip_month>/<trip_day>/<max>', methods=['GET'])
 def maxtripspeedapi(trip_year,trip_month,trip_day,max):
     # comment
     retstr = getMaxTripSpeed(trip_year, trip_month, trip_day)
