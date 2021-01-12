@@ -15,7 +15,6 @@ def sayhello():
 @app.route('/api/tip/<trip_year>/<max>', defaults={'trip_quarter': None}, methods=['GET'])
 @app.route('/api/tip/<trip_year>/<trip_quarter>/<max>', methods=['GET'])
 def maxtippctgapi(trip_year, trip_quarter, max):
-    # comment
     retstr,status = getMaxTipPercentage(trip_year, trip_quarter)
     return retstr
 
@@ -24,7 +23,6 @@ def maxtippctgapi(trip_year, trip_quarter, max):
 @app.route('/api/speed/<trip_year>/<trip_month>/<max>', defaults={'trip_day': 1}, methods=['GET'])
 @app.route('/api/speed/<trip_year>/<trip_month>/<trip_day>/<max>', methods=['GET'])
 def maxtripspeedapi(trip_year, trip_month, trip_day, max):
-    # comment
     retstr,status = getMaxTripSpeed(trip_year, trip_month, trip_day)
     return retstr
 
