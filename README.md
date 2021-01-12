@@ -11,9 +11,9 @@ Performance considerations for overall solution
 https://arijitdas23.atlassian.net/l/c/QBZ130ez
 
 # Technology Stack
-Azure DataBricks
-Azure DataFactory
-Azure DataLake Gen 1 storage
-Azure App Service (Docker enabled)
-Python
-Flask
+Azure DataBricks \n
+Azure DataFactory \n
+Azure DataLake Gen 1 storage \n
+Azure App Service (Docker enabled) \n
+Python \n
+Flask \n
