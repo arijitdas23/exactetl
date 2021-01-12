@@ -1,0 +1,161 @@
+CREATE SCHEMA Staging;
+GO
+
+
+CREATE TABLE [Staging].[YellowTaxiTipPctg] (
+	[VendorID]							INT		 NOT NULL,
+	[tpep_pickup_datetime]				DATETIME NOT NULL,
+	[tpep_dropoff_datetime]				DATETIME NOT NULL,
+	[trip_date]							DATE     NOT NULL,
+	[trip_year]							INT NOT NULL,
+	[trip_quarter] 						INT NOT NULL,
+	[passenger_count] 					INT NOT NULL,
+	[trip_distance] 					FLOAT(10) NOT NULL,
+	[RatecodeID] 						INT NOT NULL,
+	[store_and_fwd_flag] 				VARCHAR(1) NOT NULL,
+	[PULocationID]  					INT NOT NULL,
+	[DOLocationID] 						INT NOT NULL,
+	[payment_type] 						INT NOT NULL,
+	[fare_amount]  FLOAT(10) NOT NULL,
+	[extra] FLOAT(10)  NULL,
+	[mta_tax] FLOAT(10)  NULL,
+	[tip_amount] FLOAT(10) NOT NULL,
+	[tolls_amount] FLOAT(10)  NULL,
+	[improvement_surcharge] FLOAT(10)  NULL,
+	[total_amount] FLOAT(10) NOT NULL,
+	[congestion_surcharge] FLOAT(10)  NULL,
+	[tip_percentage] FLOAT(10) NOT NULL,
+	[max_tip_pctg] FLOAT(10) NOT NULL,
+	[processed_status] VARCHAR(1) NOT NULL,
+	[LastUpdatedBy] VARCHAR(100) NOT NULL,
+	[LastUpdatedTime] DATETIME NOT NULL
+);
+
+
+
+CREATE TABLE [Staging].[YellowTaxiTripSpeed] (
+	[VendorID]							INT		 NOT NULL,
+	[tpep_pickup_datetime]				DATETIME NOT NULL,
+	[tpep_dropoff_datetime]				DATETIME NOT NULL,
+	[trip_date]							DATE     NOT NULL,
+	[trip_year]							INT NOT NULL,
+	[trip_quarter] INT NOT NULL,
+	[trip_month] INT NOT NULL,
+	[trip_day_of_month] INT NOT NULL,
+	[trip_hour_of_day] INT NOT NULL,
+	[passenger_count] INT NOT NULL,
+	[trip_distance] FLOAT(10) NOT NULL,
+	[RatecodeID] INT NOT NULL,
+	[store_and_fwd_flag] VARCHAR(1) NOT NULL,
+	[PULocationID]  INT NOT NULL,
+	[DOLocationID] INT NOT NULL,
+	[payment_type] INT NOT NULL,
+	[fare_amount]  FLOAT(10) NOT NULL,
+	[extra] FLOAT(10)  NULL,
+	[mta_tax] FLOAT(10)  NULL,
+	[tip_amount] FLOAT(10) NOT NULL,
+	[tolls_amount] FLOAT(10)  NULL,
+	[improvement_surcharge] FLOAT(10)  NULL,
+	[total_amount] FLOAT(10) NOT NULL,
+	[congestion_surcharge] FLOAT(10)  NULL,
+	[trip_duration_in_hour] FLOAT(10)  NOT NULL,
+	[trip_speed] FLOAT(10)  NOT NULL,
+	[max_trip_speed] FLOAT(10)  NOT NULL,
+	[processed_status] VARCHAR(1) NOT NULL,
+	[LastUpdatedBy] VARCHAR(100) NOT NULL,
+	[LastUpdatedTime] DATETIME NOT NULL
+);
+
+
+
+CREATE TABLE [dbo].[YellowTaxiTripSpeed] (
+	[TripSpeedID] VARCHAR(20) NOT NULL,
+	[trip_date]							DATE     NOT NULL,
+	[trip_year]							INT NOT NULL,
+	[trip_quarter] INT NOT NULL,
+	[trip_month] INT NOT NULL,
+	[trip_day_of_month] INT NOT NULL,
+	[trip_hour_of_day] INT NOT NULL,
+	[trip_speed] FLOAT(10)  NOT NULL,
+	[max_trip_speed] FLOAT(10)  NOT NULL,
+	[LastUpdatedBy] VARCHAR(100) NOT NULL,
+	[LastUpdatedTime] DATETIME NOT NULL,
+	CONSTRAINT [PK_YTTripSpeed] PRIMARY KEY CLUSTERED ([TripSpeedID] ASC)
+) ON [PRIMARY];
+
+
+CREATE TABLE [dbo].[YellowTaxiTripSpeedDetails] (
+	[TripSpeedID] VARCHAR(20) NOT NULL,
+	[VendorID]							INT		 NOT NULL,
+	[tpep_pickup_datetime]				DATETIME NOT NULL,
+	[tpep_dropoff_datetime]				DATETIME NOT NULL,
+	[trip_date]							DATE     NOT NULL,
+	[trip_year]							INT NOT NULL,
+	[trip_quarter] INT NOT NULL,
+	[trip_month] INT NOT NULL,
+	[trip_day_of_month] INT NOT NULL,
+	[trip_hour_of_day] INT NOT NULL,
+	[passenger_count] INT NOT NULL,
+	[trip_distance] FLOAT(10) NOT NULL,
+	[RatecodeID] INT NOT NULL,
+	[store_and_fwd_flag] VARCHAR(1) NOT NULL,
+	[PULocationID]  INT NOT NULL,
+	[DOLocationID] INT NOT NULL,
+	[payment_type] INT NOT NULL,
+	[fare_amount]  FLOAT(10) NOT NULL,
+	[extra] FLOAT(10)  NULL,
+	[mta_tax] FLOAT(10)  NULL,
+	[tip_amount] FLOAT(10) NOT NULL,
+	[tolls_amount] FLOAT(10)  NULL,
+	[improvement_surcharge] FLOAT(10)  NULL,
+	[total_amount] FLOAT(10) NOT NULL,
+	[congestion_surcharge] FLOAT(10)  NULL,
+	[trip_duration_in_hour] FLOAT(10)  NOT NULL,
+	[trip_speed] FLOAT(10)  NOT NULL,
+	[max_trip_speed] FLOAT(10)  NOT NULL,
+	[LastUpdatedBy] VARCHAR(100) NOT NULL,
+	[LastUpdatedTime] DATETIME NOT NULL
+);
+
+
+CREATE TABLE [dbo].[YellowTaxiTipPctg] (
+	[TipPctgID] VARCHAR(20) NOT NULL,
+	[trip_year]							INT NOT NULL,
+	[trip_quarter] 						INT NOT NULL,
+	[tip_percentage] FLOAT(10) NOT NULL,
+	[max_tip_pctg] FLOAT(10) NOT NULL,
+	[LastUpdatedBy] VARCHAR(100) NOT NULL,
+	[LastUpdatedTime] DATETIME NOT NULL,
+	CONSTRAINT [PK_YTTipPctg] PRIMARY KEY CLUSTERED ([TipPctgID] ASC)
+)ON [PRIMARY];
+
+
+CREATE TABLE [dbo].[YellowTaxiTipPctgDetails] (
+	[TipPctgID] VARCHAR(20) NOT NULL,
+	[VendorID]							INT		 NOT NULL,
+	[tpep_pickup_datetime]				DATETIME NOT NULL,
+	[tpep_dropoff_datetime]				DATETIME NOT NULL,
+	[trip_date]							DATE     NOT NULL,
+	[trip_year]							INT NOT NULL,
+	[trip_quarter] 						INT NOT NULL,
+	[passenger_count] 					INT NOT NULL,
+	[trip_distance] 					FLOAT(10) NOT NULL,
+	[RatecodeID] 						INT NOT NULL,
+	[store_and_fwd_flag] 				VARCHAR(1) NOT NULL,
+	[PULocationID]  					INT NOT NULL,
+	[DOLocationID] 						INT NOT NULL,
+	[payment_type] 						INT NOT NULL,
+	[fare_amount]  FLOAT(10) NOT NULL,
+	[extra] FLOAT(10)  NULL,
+	[mta_tax] FLOAT(10)  NULL,
+	[tip_amount] FLOAT(10) NOT NULL,
+	[tolls_amount] FLOAT(10)  NULL,
+	[improvement_surcharge] FLOAT(10)  NULL,
+	[total_amount] FLOAT(10) NOT NULL,
+	[congestion_surcharge] FLOAT(10)  NULL,
+	[tip_percentage] FLOAT(10) NOT NULL,
+	[max_tip_pctg] FLOAT(10) NOT NULL,
+	[LastUpdatedBy] VARCHAR(100) NOT NULL,
+	[LastUpdatedTime] DATETIME NOT NULL
+);
+
